@@ -13,12 +13,12 @@ public:
                 nums[i] = nums[j];
             }
         }
-        return i + 1; // number of unique elements
+        return i + 1;
     }
 };
 
 int main(){
-    vector<int> nums = {1,1,2,2,3,3,4};  // sorted hona chahiye
+    vector<int> nums = {1,1,2,2,3,3,4};
 
     Solution s;
     int k = s.removeDuplicates(nums);
