@@ -4,19 +4,20 @@ using namespace std;
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
-        int minPrice = INT_MAX;
-        int maxProfit = 0;
-
-        for (int price : prices) {
-            minPrice = min(minPrice, price); 
-            maxProfit = max(maxProfit, price - minPrice);
+        int maxprofit = 0;
+        int largestprice = 0;
+        int smallestprice = INT_MAX;
+        for(int n = 1; n < prices.size(); ++n){
+            if(prices[n] > prices[n-1]){
+                maxprofit += prices[n] - prices[n-1];
+            }
         }
-        return maxProfit;
+        return maxprofit;
     }
 };
 
 int main(){
-    vector<int> prices = {2,1,2,1,0,1,2};
+    vector<int> prices = {2,1,2,1,10,1,2};
     Solution s;
     cout << s.maxProfit(prices);
-}
+} 
