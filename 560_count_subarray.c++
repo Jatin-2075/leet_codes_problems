@@ -19,7 +19,7 @@ public:
 
 int main() {
     vector <int> nums = {1,2,1,2,1};
-    int k = 3;
+    int k = 3; 
     Solution s;
     cout << s.subarraySum(nums, k);
 }
