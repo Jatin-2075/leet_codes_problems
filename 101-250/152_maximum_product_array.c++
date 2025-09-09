@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-
+        
 class Solution {
 public:
     int maxProduct(vector<int>& nums) {
@@ -19,7 +19,7 @@ public:
 };
 
 int main() {
-    vector <int> nums = {2,3,-2,4};
+    vector <int> nums = {};
     Solution s;
     cout << s.maxProduct(nums);
 }
