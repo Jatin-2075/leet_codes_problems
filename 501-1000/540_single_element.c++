@@ -4,29 +4,23 @@ using namespace std;
 class Solution {
 public:
     int singleNonDuplicate(vector<int>& nums) {
-        int low = 0;
-        int high = nums.size();
-        bool check = true;
+        int low = 0, high = nums.size() - 1;
 
-        while(check){
+        while(low < high){
             int mid = low + (high - low) / 2;
+            if(mid % 2 == 1) mid--;
 
-            if(nums[mid+1] > nums[mid] && nums[mid-1] < nums[mid]){
-                return nums[mid];
-                check = false;
-            }
-
-            else if(low < high){
-                high = mid - 1;
-            }
-            else if(high == low){
-                high = nums.size();
+            if(nums[mid] == nums[mid + 1]){
+                low = mid + 2;
+            } else {
+                high = mid;
             }
         }
+        return nums[low];
     }
 };
 
-int main() {
+int main() { 
     vector <int> nums = {1,1,2,3,3,4,4,8,8};
 
     Solution s;
