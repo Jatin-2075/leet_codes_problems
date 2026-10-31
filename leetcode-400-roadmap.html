@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>400 Grind — LeetCode Roadmap</title>
+  <style>
+    :root {
+      box-sizing: border-box;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+      --bg: #f4f1ea;
+      --card: #fffdf8;
+      --ink: #141414;
+      --mute: #6b675e;
+      --line: #dcd6c8;
+      --g: #2e9e5b;
+      --r: #d64545;
+      --o: #f08a24;
+      --y: #f2c230
+    }
+
+    @media(prefers-color-scheme:dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #0c0c0c;
+        --card: #171717;
+        --ink: #f1eee6;
+        --mute: #9a968b;
+        --line: #2b2b2b
+      }
+    }
+
+    :root[data-theme="dark"] {
+      --bg: #0c0c0c;
+      --card: #171717;
+      --ink: #f1eee6;
+      --mute: #9a968b;
+      --line: #2b2b2b
+    }
+
+    html {
+      scroll-padding-top: env(safe-area-inset-top, 0px)
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif
+    }
+
+    .w {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 16px
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px
+    }
+
+    h1 {
+      font-size: 28px;
+      margin: 0;
+      letter-spacing: -.5px
+    }
+
+    h1 b {
+      color: var(--g)
+    }
+
+    .btn {
+      background: var(--card);
+      color: var(--ink);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font: inherit
+    }
+
+    .btn.on {
+      background: var(--ink);
+      color: var(--bg)
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 22px;
+      align-items: center;
+      background: #111;
+      color: #f4f1ea;
+      border: 1px solid #2b2b2b;
+      border-radius: 16px;
+      padding: 20px;
+      margin: 16px 0
+    }
+
+    .ring {
+      width: 132px;
+      height: 132px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: conic-gradient(var(--g) calc(var(--p)*1%), #333 0)
+    }
+
+    .ring i {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: #111;
+      display: grid;
+      place-items: center;
+      font: 700 28px system-ui
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(84px, 1fr));
+      gap: 10px
+    }
+
+    .st {
+      border-left: 4px solid #f4f1ea;
+      padding-left: 8px
+    }
+
+    .st b {
+      font-size: 22px;
+      display: block;
+      line-height: 1.2
+    }
+
+    .st span {
+      font-size: 12px;
+      opacity: .7
+    }
+
+    .st.s {
+      border-color: var(--g)
+    }
+
+    .st.r {
+      border-color: var(--y)
+    }
+
+    .st.k {
+      border-color: var(--o)
+    }
+
+    .st.w {
+      border-color: var(--r)
+    }
+
+    .m2 {
+      margin: 14px 0 0;
+      font-size: 13px;
+      opacity: .85
+    }
+
+    .m2 input {
+      width: 52px;
+      background: #222;
+      color: #f4f1ea;
+      border: 1px solid #444;
+      border-radius: 6px;
+      padding: 2px 6px;
+      font: inherit
+    }
+
+    .bar {
+      height: 8px;
+      background: var(--line);
+      border-radius: 9px;
+      overflow: hidden
+    }
+
+    .bar i {
+      display: block;
+      height: 100%;
+      background: var(--g)
+    }
+
+    .m {
+      color: var(--mute);
+      font-size: 13px;
+      margin: 6px 0 0
+    }
+
+    .q,
+    details {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px 14px;
+      margin: 10px 0
+    }
+
+    .q {
+      border-top: 4px solid var(--o)
+    }
+
+    h2 {
+      font-size: 15px;
+      margin: 0 0 4px
+    }
+
+    summary {
+      cursor: pointer;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 6px 10px;
+      list-style: none
+    }
+
+    summary::-webkit-details-marker {
+      display: none
+    }
+
+    summary .bar {
+      grid-column: 1/-1
+    }
+
+    summary em {
+      color: var(--mute);
+      font-style: normal
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding: 10px 0 2px
+    }
+
+    .c {
+      border: 1px solid var(--line);
+      border-left: 5px solid var(--line);
+      border-radius: 8px;
+      padding: 4px 8px;
+      font-size: 13px;
+      cursor: pointer;
+      background: var(--card);
+      user-select: none;
+      display: flex;
+      gap: 8px;
+      align-items: center
+    }
+
+    .c a {
+      color: var(--mute);
+      text-decoration: none
+    }
+
+    .c.s {
+      border-left-color: var(--g);
+      background: color-mix(in srgb, var(--g) 15%, var(--card))
+    }
+
+    .c.r {
+      border-left-color: var(--y);
+      background: color-mix(in srgb, var(--y) 20%, var(--card))
+    }
+
+    .c.k {
+      border-left-color: var(--o);
+      background: color-mix(in srgb, var(--o) 20%, var(--card))
+    }
+
+    .c.w {
+      border-left-color: var(--r);
+      background: color-mix(in srgb, var(--r) 18%, var(--card))
+    }
+
+    .f {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 14px 0 4px
+    }
+
+    textarea {
+      width: 100%;
+      height: 110px;
+      background: var(--bg);
+      color: var(--ink);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 8px;
+      font: 12px monospace;
+      margin: 8px 0
+    }
+
+    @media(max-width:560px) {
+      .hero {
+        grid-template-columns: 1fr;
+        justify-items: center
+      }
+
+      .stats {
+        width: 100%
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="w">
+    <header>
+      <h1>400 <b>Grind</b></h1><button class="btn" id="th">◐ Theme</button>
+    </header>
+    <div id="app"></div>
+    <details>
+      <summary><b>Import history / backup</b><em>data</em></summary>
+      <p class="m">Paste your LeetCode submissions list to fill titles and mark solved problems, or paste a JSON backup
+        to restore. Progress is saved in this browser (localStorage).</p>
+      <textarea id="box" placeholder="Paste here…"></textarea>
+      <button class="btn" id="imp">Import</button> <button class="btn" id="exp">Export JSON</button> <button class="btn"
+        id="rst">Reset</button> <span class="m" id="msg"></span>
+    </details>
+  </div>
+
+  <!-- DATA: a bare number = already solved in your history; [id,"Title"] = new; third item "w" = attempted, wrong -->
+  <script type="application/json" id="data">
+{"phases":[
+{"name":"Arrays & Hashing","goal":"Prefix sums, hash maps, in-place tricks","p":[1,49,217,242,238,128,560,169,229,53,121,75,31,48,54,73,118,119,189,26,27,283,268,136,485,1752,2149,448,66,88,41,414,645,594,350,349,219,187,1652,228,152,287,[523,"Continuous Subarray Sum","w"],[271,"Encode and Decode Strings"],[380,"Insert Delete GetRandom O(1)"],[442,"Find All Duplicates in an Array"],[179,"Largest Number"],[665,"Non-decreasing Array"]]},
+{"name":"Strings, Math & Bits","goal":"Parsing, simulation, bit tricks","p":[5,125,344,392,8,43,67,168,205,12,13,9,7,28,58,14,36,520,191,190,137,389,342,231,326,29,50,258,338,441,[6,"Zigzag Conversion","w"],[151,"Reverse Words in a String"],[171,"Excel Sheet Column Number"],[415,"Add Strings"],[371,"Sum of Two Integers"],[201,"Bitwise AND of Numbers Range"],[461,"Hamming Distance"],[227,"Basic Calculator II"],[224,"Basic Calculator"],[273,"Integer to English Words"],[459,"Repeated Substring Pattern"]]},
+{"name":"Two Pointers & Sliding Window","goal":"Fixed and variable windows, counting subarrays","p":[11,167,15,16,18,42,881,977,3,424,438,567,76,209,643,713,904,1004,1456,1876,1493,1838,30,239,[680,"Valid Palindrome II"],[611,"Valid Triangle Number"],[992,"Subarrays with K Different Integers"],[930,"Binary Subarrays With Sum"],[1248,"Count Number of Nice Subarrays"],[1423,"Maximum Points You Can Obtain from Cards"]]},
+{"name":"Binary Search","goal":"Search on index and search on answer","p":[704,35,34,33,81,153,154,162,540,278,367,69,852,875,1011,410,74,240,744,275,378,374,[1482,"Minimum Number of Days to Make m Bouquets"],[1283,"Smallest Divisor Given a Threshold"],[981,"Time Based Key-Value Store"],[658,"Find K Closest Elements"],[2300,"Successful Pairs of Spells and Potions"],[1095,"Find in Mountain Array"]]},
+{"name":"Stack & Queue","goal":"Monotonic stacks, parsing, design","p":[20,155,739,496,232,225,933,1047,[150,"Evaluate Reverse Polish Notation"],[84,"Largest Rectangle in Histogram"],[85,"Maximal Rectangle"],[503,"Next Greater Element II"],[901,"Online Stock Span"],[853,"Car Fleet"],[394,"Decode String"],[316,"Remove Duplicate Letters"],[402,"Remove K Digits"],[71,"Simplify Path"],[735,"Asteroid Collision"],[1249,"Minimum Remove to Make Valid Parentheses"],[32,"Longest Valid Parentheses"],[907,"Sum of Subarray Minimums"],[682,"Baseball Game"],[946,"Validate Stack Sequences"]]},
+{"name":"Linked List","goal":"Pointers, reversal, merge, LRU","p":[206,21,83,141,876,19,142,2,24,328,203,160,138,143,61,[234,"Palindrome Linked List"],[92,"Reverse Linked List II"],[25,"Reverse Nodes in k-Group"],[148,"Sort List"],[23,"Merge k Sorted Lists"],[146,"LRU Cache"],[82,"Remove Duplicates from Sorted List II"],[86,"Partition List"]]},
+{"name":"Trees & BST","goal":"DFS/BFS, construction, serialization","p":[94,144,145,102,104,226,101,100,110,111,112,113,114,116,117,98,99,124,129,199,230,235,236,257,404,530,543,559,617,637,653,700,783,938,107,103,222,501,987,[105,"Construct Binary Tree from Preorder and Inorder"],[106,"Construct Binary Tree from Inorder and Postorder"],[108,"Convert Sorted Array to BST"],[297,"Serialize and Deserialize Binary Tree"],[437,"Path Sum III"],[450,"Delete Node in a BST"],[173,"BST Iterator"],[96,"Unique Binary Search Trees"],[1448,"Count Good Nodes in Binary Tree"],[863,"All Nodes Distance K in Binary Tree"],[669,"Trim a BST"],[701,"Insert into a BST"],[979,"Distribute Coins in Binary Tree"],[968,"Binary Tree Cameras"]]},
+{"name":"Backtracking","goal":"Choose, explore, undo; prune early","p":[78,46,47,77,39,40,22,17,79,[131,"Palindrome Partitioning"],[51,"N-Queens"],[90,"Subsets II"],[216,"Combination Sum III"],[93,"Restore IP Addresses"],[37,"Sudoku Solver"],[698,"Partition to K Equal Sum Subsets"],[784,"Letter Case Permutation"],[526,"Beautiful Arrangement"]]},
+{"name":"Heap / Priority Queue","goal":"Top-K, scheduling, two heaps (a gap in your history)","p":[[703,"Kth Largest Element in a Stream"],[1046,"Last Stone Weight"],[215,"Kth Largest Element in an Array"],[347,"Top K Frequent Elements"],[973,"K Closest Points to Origin"],[621,"Task Scheduler"],[355,"Design Twitter"],[295,"Find Median from Data Stream"],[767,"Reorganize String"],[264,"Ugly Number II"],[373,"Find K Pairs with Smallest Sums"],[502,"IPO"],[692,"Top K Frequent Words"],[451,"Sort Characters By Frequency"],[1962,"Remove Stones to Minimize the Total"],[1985,"Find the Kth Largest Integer in the Array"]]},
+{"name":"Graphs, BFS/DFS & Union-Find","goal":"Grids, topo sort, union-find, Dijkstra (a gap in your history)","p":[200,130,733,463,419,[695,"Max Area of Island"],[417,"Pacific Atlantic Water Flow"],[994,"Rotting Oranges"],[542,"01 Matrix"],[133,"Clone Graph"],[207,"Course Schedule"],[210,"Course Schedule II"],[547,"Number of Provinces"],[684,"Redundant Connection"],[785,"Is Graph Bipartite?"],[797,"All Paths From Source to Target"],[841,"Keys and Rooms"],[127,"Word Ladder"],[1091,"Shortest Path in Binary Matrix"],[743,"Network Delay Time"],[787,"Cheapest Flights Within K Stops"],[1584,"Min Cost to Connect All Points"],[778,"Swim in Rising Water"],[1631,"Path With Minimum Effort"],[332,"Reconstruct Itinerary"],[399,"Evaluate Division"],[802,"Find Eventual Safe States"],[310,"Minimum Height Trees"],[1020,"Number of Enclaves"],[721,"Accounts Merge"],[1926,"Nearest Exit from Entrance in Maze"],[1971,"Find if Path Exists in Graph"],[1466,"Reorder Routes to Make All Paths Lead to the City Zero"]]},
+{"name":"Dynamic Programming","goal":"1D, grid, knapsack, strings, stocks (your biggest gap)","p":[70,746,509,198,120,139,[213,"House Robber II"],[337,"House Robber III"],[740,"Delete and Earn"],[322,"Coin Change"],[518,"Coin Change II"],[300,"Longest Increasing Subsequence"],[1143,"Longest Common Subsequence"],[72,"Edit Distance"],[62,"Unique Paths"],[63,"Unique Paths II"],[64,"Minimum Path Sum"],[221,"Maximal Square"],[91,"Decode Ways"],[416,"Partition Equal Subset Sum"],[494,"Target Sum"],[279,"Perfect Squares"],[647,"Palindromic Substrings"],[516,"Longest Palindromic Subsequence"],[97,"Interleaving String"],[10,"Regular Expression Matching"],[44,"Wildcard Matching"],[115,"Distinct Subsequences"],[309,"Best Time to Buy and Sell Stock with Cooldown"],[122,"Best Time to Buy and Sell Stock II"],[123,"Best Time to Buy and Sell Stock III"],[188,"Best Time to Buy and Sell Stock IV"],[714,"Best Time to Buy and Sell Stock with Transaction Fee"],[673,"Number of Longest Increasing Subsequence"],[354,"Russian Doll Envelopes"],[1049,"Last Stone Weight II"],[877,"Stone Game"],[312,"Burst Balloons"],[343,"Integer Break"],[931,"Minimum Falling Path Sum"],[1035,"Uncrossed Lines"],[583,"Delete Operation for Two Strings"],[1312,"Minimum Insertion Steps to Make a String Palindrome"],[132,"Palindrome Partitioning II"],[1235,"Maximum Profit in Job Scheduling"],[1262,"Greatest Sum Divisible by Three","w"],[983,"Minimum Cost For Tickets"],[1218,"Longest Arithmetic Subsequence of Given Difference"]]},
+{"name":"Greedy & Intervals","goal":"Sort, sweep, local choices","p":[55,45,455,860,56,[435,"Non-overlapping Intervals"],[57,"Insert Interval"],[452,"Minimum Number of Arrows to Burst Balloons"],[763,"Partition Labels"],[134,"Gas Station"],[135,"Candy"],[406,"Queue Reconstruction by Height"],[986,"Interval List Intersections"],[1288,"Remove Covered Intervals"],[646,"Maximum Length of Pair Chain"],[605,"Can Place Flowers"],[376,"Wiggle Subsequence"],[1094,"Car Pooling"],[738,"Monotone Increasing Digits"],[1029,"Two City Scheduling"],[561,"Array Partition"]]},
+{"name":"Tries, Design & Advanced","goal":"Prefix trees, data-structure design, segment/BIT ideas","p":[212,4,[208,"Implement Trie"],[211,"Design Add and Search Words Data Structure"],[648,"Replace Words"],[677,"Map Sum Pairs"],[1268,"Search Suggestions System"],[421,"Maximum XOR of Two Numbers in an Array"],[460,"LFU Cache"],[705,"Design HashSet"],[706,"Design HashMap"],[622,"Design Circular Queue"],[1146,"Snapshot Array"],[1472,"Design Browser History"],[307,"Range Sum Query - Mutable"],[315,"Count of Smaller Numbers After Self"]]}
+]}
+</script>
+
+  <script>
+    const $ = s => document.querySelector(s);
+    const E = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+    const ST = ['', 's', 'r', 'k', 'w'], LB = { '': 'Todo', s: 'Solved', r: 'Review', k: 'Stuck', w: 'Wrong' };
+    let S; try { S = JSON.parse(localStorage.getItem('lc400')) } catch (e) { }
+    S = Object.assign({ st: {}, t: {}, sl: {}, df: {}, d: {}, pace: 4, th: '' }, S || {});
+    const save = () => { try { localStorage.setItem('lc400', JSON.stringify(S)) } catch (e) { } };
+    const D = JSON.parse($('#data').textContent), O = {};
+    D.phases.forEach(p => p.it = p.p.map(x => Array.isArray(x) ? { id: x[0], t: x[1], s: x[2] } : { id: x, s: 's' }));
+    const all = D.phases.flatMap(p => p.it);
+    all.forEach(i => { if (S.st[i.id] === undefined && i.s) S.st[i.id] = i.s });
+    if (S.th) document.documentElement.dataset.theme = S.th;
+    const g = i => S.st[i.id] || '', ymd = d => new Date(d - d.getTimezoneOffset() * 6e4).toISOString().slice(0, 10);
+    const url = i => S.sl[i.id] ? `https://leetcode.com/problems/${S.sl[i.id]}/` : `https://leetcode.com/problemset/?search=${i.id}`;
+    const chip = i => `<div class="c ${g(i)}" data-id="${i.id}" title="${LB[g(i)]} — click to change status"><span>#${i.id} ${E(S.t[i.id] || i.t || '')}</span><a href="${url(i)}" target="_blank" rel="noopener">↗</a></div>`;
+    let F = 'all';
+    function render() {
+      const n = all.length, done = all.filter(i => g(i) === 's').length, c = k => all.filter(i => g(i) === k).length;
+      const t = ymd(new Date()), ds = new Set(Object.values(S.d)); let sk = 0, d = new Date();
+      if (!ds.has(t)) d.setDate(d.getDate() - 1);
+      while (ds.has(ymd(d))) { sk++; d.setDate(d.getDate() - 1) }
+      const left = n - done, days = Math.ceil(left / S.pace), fin = new Date(); fin.setDate(fin.getDate() + days);
+      const cur = D.phases.findIndex(p => p.it.some(i => g(i) !== 's')), q = all.filter(i => !g(i)).slice(0, S.pace);
+      const stats = [['s', 'Solved', done], ['r', 'Review', c('r')], ['k', 'Stuck', c('k')], ['w', 'Wrong', c('w')], ['t', 'Today', all.filter(i => S.d[i.id] === t).length], ['f', 'Streak', sk + 'd']];
+      const fl = [['all', 'All'], ['', 'Todo'], ['s', 'Solved'], ['r', 'Review'], ['k', 'Stuck'], ['w', 'Wrong']];
+      $('#app').innerHTML = `
+<section class="hero"><div class="ring" style="--p:${done / n * 100}"><i>${Math.round(done / n * 100)}%</i></div>
+<div><div class="stats">${stats.map(([k, l, v]) => `<div class="st ${k}"><b>${v}</b><span>${l}</span></div>`).join('')}</div>
+<p class="m2">${done}/${n} done · ${left} left · <label>pace <input id="pace" type="number" min="1" value="${S.pace}"> per day</label> → about ${days} days (${fin.toDateString()})</p></div></section>
+<div class="q"><h2>Today's queue</h2><div class="chips">${q.map(chip).join('') || '<span class="m">All done. Legend.</span>'}</div>
+<p class="m">Click a chip to cycle: Todo → Solved (green) → Review (yellow) → Stuck (orange) → Wrong (red).</p></div>
+<div class="f">${fl.map(([k, l]) => `<button class="btn ${F === k ? 'on' : ''}" data-f="${k}">${l}</button>`).join('')}</div>
+${D.phases.map((p, x) => {
+        const dn = p.it.filter(i => g(i) === 's').length, pc = Math.round(dn / p.it.length * 100);
+        if (O[x] === undefined) O[x] = x === cur;
+        const list = p.it.filter(i => F === 'all' || g(i) === F);
+        return `<details data-x="${x}" ${O[x] ? 'open' : ''}><summary><b>${x + 1}. ${p.name}</b><em>${dn}/${p.it.length}</em><div class="bar"><i style="width:${pc}%"></i></div></summary><p class="m">${p.goal}</p><div class="chips">${list.map(chip).join('') || '<span class="m">Nothing here</span>'}</div></details>`
+      }).join('')}`;
+    }
+    const app = $('#app');
+    app.addEventListener('click', e => {
+      const f = e.target.closest('[data-f]'); if (f) { F = f.dataset.f; render(); return }
+      const c = e.target.closest('.c'); if (!c || e.target.closest('a')) return;
+      const id = c.dataset.id, i = all.find(z => z.id == id), nx = ST[(ST.indexOf(g(i)) + 1) % 5];
+      S.st[id] = nx; if (nx === 's') S.d[id] = ymd(new Date()); else delete S.d[id];
+      save(); render();
+    });
+    app.addEventListener('change', e => { if (e.target.id === 'pace') { S.pace = Math.max(1, parseInt(e.target.value) || 1); save(); render() } });
+    app.addEventListener('toggle', e => { O[e.target.dataset.x] = e.target.open }, true);
+    $('#th').onclick = () => { const dk = document.documentElement.dataset.theme === 'dark' || (!document.documentElement.dataset.theme && matchMedia('(prefers-color-scheme:dark)').matches); S.th = dk ? 'light' : 'dark'; document.documentElement.dataset.theme = S.th; save() };
+    const msg = t => $('#msg').textContent = t;
+    $('#imp').onclick = () => {
+      const v = $('#box').value.trim(); if (!v) return;
+      if (v[0] === '{') { try { S = Object.assign(S, JSON.parse(v)); msg('Backup restored.') } catch (e) { return msg('That JSON is not valid.') } }
+      else {
+        const re = /\[(\d+)\.\s*([^\]]+)\]\(https:\/\/leetcode\.com\/problems\/([^\/]+)\/\)\s*(Easy|Med\.|Hard)\s*(\S[^\n]*)/g; let m, k = 0;
+        while (m = re.exec(v)) {
+          const [, id, t, sl, df, r] = m, s = S.st[id]; k++; S.t[id] = t; S.sl[id] = sl; S.df[id] = df;
+          if (/Accepted/.test(r)) S.st[id] = (s === 'r' || s === 'k') ? s : 's'; else if (!s) S.st[id] = 'w'
+        }
+        msg(k + ' submissions read.');
+      }
+      save(); render();
+    };
+    $('#exp').onclick = () => { $('#box').value = JSON.stringify(S); msg('Copy this text as your backup.') };
+    let rs = 0; $('#rst').onclick = () => { if (!rs) { rs = 1; msg('Click Reset again to wipe all progress.'); return } try { localStorage.removeItem('lc400') } catch (e) { } location.reload() };
+    render();
+  </script>
+</body>
+
+</html>
